@@ -6,6 +6,5 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-ContentType.create(name: 'article')
-ContentType.create(name: 'job vacancy')
-ContentType.create(name: 'comment')
+require_relative './seed/admin'
+require_relative './seed/content_type'
