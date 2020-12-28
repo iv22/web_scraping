@@ -1,6 +1,7 @@
-class Admin::LoadController < ActionController::Base
+class Admin::LoadController < ApplicationController
   before_action :authenticate_admin!
 
   def index
+    
   end
 end

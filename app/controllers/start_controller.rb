@@ -1,4 +1,4 @@
-class StartController < ActionController::Base
+class StartController < ApplicationController
   def index
     upload
   end
