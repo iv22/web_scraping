@@ -1,14 +1,30 @@
-import React, {useState} from "react"
+import React, {useState, useRef} from "react"
 import PeopleOnliner from "./PeopleOnliner"
 import RabotaBy from "./Rabotaby"
 
 function ContentLoad(props) {
-  
+  const token = document.querySelector('meta[name="csrf-token"]').content   
   const [selectedSource, setSelected] = useState(props.selected)
+  const form = useRef(null)
 
   const formSubmit = (event) => {
-    event.preventDefault();
+    event.preventDefault()
     console.log("SUBMIT")
+    const data = new FormData(form.current)
+    fetch(`/admin/load/${selectedSource}`,
+    {
+      method: 'POST',
+      headers: {
+        'X-CSRF-Token': token
+      },
+      body: data
+    })
+    .then((response) => {
+      return response
+    })
+    .then((data) => {
+      console.log(data)
+    });    
   }
 
   const onValueChange = (event) => {
@@ -18,7 +34,7 @@ function ContentLoad(props) {
 
   return (
     <div>
-      <form onSubmit={formSubmit}>
+      <form ref={form} onSubmit={formSubmit}>
         <div>
           <input type="radio" id="onliner" name="source" value="onliner" 
             checked={selectedSource === "onliner"}

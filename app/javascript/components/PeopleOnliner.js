@@ -16,6 +16,8 @@ function PeopleOnliner(props) {
       <label> 
         Начало периода<br/>
         <DatePicker 
+          name="start_date"
+          dateFormat="dd/MM/yyyy"
           selected={startDate} 
           onChange={date => setStartDate(date)} 
           showMonthDropdown
@@ -27,6 +29,8 @@ function PeopleOnliner(props) {
       <label> 
         Конец периода (включительно)<br/>
         <DatePicker 
+          name="end_date"
+          dateFormat="dd/MM/yyyy"
           selected={endDate} 
           onChange={date => setEndDate(date)} 
           showMonthDropdown

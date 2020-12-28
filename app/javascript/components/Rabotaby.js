@@ -5,7 +5,7 @@ function RabotaBy(props) {
     <div>
       <label htmlFor="rabotaby_keyword">Ключевое слово</label>    
       <br/>
-      <input type="text" id="rabotaby_keyword" name="criteria" value="ruby" />      
+      <input type="text" id="rabotaby_keyword" name="criteria" />      
     </div>
   );
 }
