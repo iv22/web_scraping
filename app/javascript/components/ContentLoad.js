@@ -33,23 +33,41 @@ function ContentLoad(props) {
   }
 
   return (
-    <div>
-      <form ref={form} onSubmit={formSubmit}>
-        <div>
-          <input type="radio" id="onliner" name="source" value="onliner" 
-            checked={selectedSource === "onliner"}
-            onChange={onValueChange}/>
-          <label htmlFor="onliner">Новости Onliner</label>          
-          {selectedSource === "onliner" ? <PeopleOnliner />: null}          
+    <div>      
+      <form ref={form} onSubmit={formSubmit} class="container">
+        <div class="row">
+          <div class="container">
+            <div class="row">
+              <label htmlFor="onliner" class="btn btn-secondary">
+                <input type="radio" id="onliner" name="source" value="onliner" 
+                  checked={selectedSource === "onliner"}
+                  onChange={onValueChange}/>
+                Новости Onliner
+              </label>          
+            </div>
+            <div class="row">
+              {selectedSource === "onliner" ? <PeopleOnliner />: null}          
+            </div> 
+          </div>
         </div>
-        <div>
-          <input type="radio" id="rabotaby" name="source" value="rabotaby" 
-            checked={selectedSource === "rabotaby"} 
-            onChange={onValueChange} />
-          <label htmlFor="rabotaby">Вакансии RabotaBy</label>
-          {selectedSource === "rabotaby" ? <RabotaBy />: null}           
+        <div class="row">
+          <div class="container">
+            <div class="row">
+              <label htmlFor="rabotaby" class="btn btn-secondary">
+                <input type="radio" id="rabotaby" name="source" value="rabotaby" 
+                  checked={selectedSource === "rabotaby"} 
+                  onChange={onValueChange} />
+                Вакансии RabotaBy
+              </label>
+            </div>
+            <div class="row">
+              {selectedSource === "rabotaby" ? <RabotaBy />: null}           
+            </div>  
+          </div>
         </div>
-        <input type='submit' value='Собрать данные' />
+        <div class="row">      
+          <input type='submit' value='Собрать данные' class="btn btn-primary" data-toggle="button" />
+        </div>
       </form>        
     </div>
   );

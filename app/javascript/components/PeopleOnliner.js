@@ -12,9 +12,11 @@ function PeopleOnliner(props) {
   registerLocale('ru', ru)
   /* setDefaultLocale('ru'); */
   return (
-    <div>
-      <label> 
-        Начало периода<br/>
+    <React.Fragment>
+      <div class="col-1"></div>
+      <div class="col-3">
+        <label>Начало периода</label>
+        <br/>
         <DatePicker 
           name="start_date"
           dateFormat="dd/MM/yyyy"
@@ -23,11 +25,11 @@ function PeopleOnliner(props) {
           showMonthDropdown
           showYearDropdown
           locale="ru"
-          dropdownMode="scroll" />
-      </label>
-      <br/>
-      <label> 
-        Конец периода (включительно)<br/>
+          dropdownMode="scroll" />      
+      </div>
+      <div class="col-3">
+        <label>Конец периода (включительно)</label>
+        <br/>
         <DatePicker 
           name="end_date"
           dateFormat="dd/MM/yyyy"
@@ -36,9 +38,9 @@ function PeopleOnliner(props) {
           showMonthDropdown
           showYearDropdown
           locale="ru"
-          dropdownMode="scroll" />
-      </label>      
-    </div>
+          dropdownMode="scroll" />      
+      </div>        
+      </React.Fragment>
   );
 }
 

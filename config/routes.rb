@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   
+  get 'test/index'
   devise_for :admin  
 
   namespace :admin do
@@ -8,6 +9,4 @@ Rails.application.routes.draw do
     post 'load/onliner'
     post 'load/rabotaby'
   end 
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
-  get 'start', to: 'start#index'
 end
