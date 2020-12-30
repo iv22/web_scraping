@@ -59,9 +59,9 @@ class OnlinerNews < WebContent
     doc = Nokogiri::HTML(html)
 
     author = doc.xpath("//div[contains(@class,'news-header__author')]").first.text
-    result = { "author" => author, "words_frequency" => {} }
-
     description = doc.xpath("//div[contains(@class,'news-text')]//p").text
+    score = calc_textmood(description)   
+    result = { "author" => author, "text_mood" => score, "words_frequency" => {} }
     words = description.tr(",./","   ").split(' ')
     words.each do |word| 
       result["words_frequency"][word.downcase] ||= 0
@@ -74,4 +74,8 @@ class OnlinerNews < WebContent
     raise StandardError("URI unreachable: " + url)
   end
 
+  def calc_textmood(text)
+    tm = TextMood.new(language: "ru")
+    tm.analyze(text)
+  end
 end

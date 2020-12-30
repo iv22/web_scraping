@@ -21,12 +21,16 @@ class WebContent
   def result_count
     2
   end
+  
+  def catch_method(method)
+    raise NotImplementedError, "Method #{method} must be implemented"
+  end
 
   def get_data(_)
-    raise NotImplementedError, "Method #{__method__} must be implemented"
+    catch_method(__method__)
   end
 
   def open_link(_)
-    raise NotImplementedError, "Method #{__method__} must be implemented"
+    catch_method(__method__)
   end
 end
