@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   
-  get 'test/index'
+  get 'onliner_mood/index'
   devise_for :admin  
 
   namespace :admin do

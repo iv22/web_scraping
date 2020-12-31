@@ -11,8 +11,8 @@ class WebContent
   end
 
   def each
-    get_data.each_with_index do |url, i| 
-      yield WebCrumb.new(open_link(url), url) if i < result_count      
+    get_data.each_with_index do |res, i| 
+      yield WebCrumb.new(open_link(res[:url]), res[:url], res[:actual_date]) if i < result_count      
     end
   end
 
@@ -32,5 +32,9 @@ class WebContent
 
   def open_link(_)
     catch_method(__method__)
+  end
+
+  def get_actual_date
+    DateTime.now
   end
 end

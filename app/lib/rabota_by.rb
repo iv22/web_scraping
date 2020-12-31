@@ -28,16 +28,12 @@ class RabotaBy < WebContent
   def get_data(url = base_uri, result_links = [])
     html = URI.open(url)
     doc = Nokogiri::HTML(html)
-
     doc.xpath('//a[@data-vacancy-id]').each do |link|
-      result_links << link['href']    
+      result_links << {url: link['href'], actual_date: get_actual_date}
     end
-
     get_data("https://rabota.by" + doc.xpath("//a[contains(@data-qa, 'pager-next')]").first['href'], result_links) \
       if doc.xpath("//a[contains(@data-qa, 'pager-next')]").count == 1 && result_links.size < result_count
-    
     result_links
-
   rescue Errno::ENOENT, SocketError 
     raise StandardError("URI unreachable: " + url)
   end
@@ -45,19 +41,15 @@ class RabotaBy < WebContent
   def open_link(url)
     html = URI.open(url)
     doc = Nokogiri::HTML(html)  
-
     company_name = doc.xpath("//a[contains(@data-qa,'vacancy-company-name')]").first.text
     result = { "company" => company_name, "words_frequency" => {} }
-
     description = doc.xpath("//div[contains(@data-qa,'vacancy-description')]").text
     words = description.tr(",./","   ").split(' ')
     words.each do |word| 
       result["words_frequency"][word.downcase] ||= 0
       result["words_frequency"][word.downcase] += 1
     end  
-
     result
-
   rescue Errno::ENOENT, SocketError 
     raise StandardError("URI unreachable: " + url)
   end

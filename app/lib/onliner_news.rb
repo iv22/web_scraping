@@ -36,20 +36,17 @@ class OnlinerNews < WebContent
   def get_data
     start_date.upto(end_date) do |date|
       date_part_url = [date.year, format('%02d', date.month), format('%02d', date.day)].join('/')
-      fill_links(BASE_URI + '/' + date_part_url)
+      fill_links(BASE_URI + '/' + date_part_url, date)
     end
-
     @result_links
   end
 
-  def fill_links(url)
+  def fill_links(url, actual_date)
     html = URI.open(url)
     doc = Nokogiri::HTML(html)
-
     doc.xpath("//a[contains(@class,'news-tidings__link')]").each do |link|
-      @result_links << (BASE_URI + link['href'])
+      @result_links << {url: (BASE_URI + link['href']), actual_date: actual_date}
     end
-
   rescue Errno::ENOENT, SocketError 
     raise StandardError("URI unreachable: " + url)
   end
@@ -57,7 +54,6 @@ class OnlinerNews < WebContent
   def open_link(url)
     html = URI.open(url)
     doc = Nokogiri::HTML(html)
-
     author = doc.xpath("//div[contains(@class,'news-header__author')]").first.text
     description = doc.xpath("//div[contains(@class,'news-text')]//p").text
     score = calc_textmood(description)   
@@ -67,9 +63,7 @@ class OnlinerNews < WebContent
       result["words_frequency"][word.downcase] ||= 0
       result["words_frequency"][word.downcase] += 1
     end  
-
     result
-
   rescue Errno::ENOENT, SocketError 
     raise StandardError("URI unreachable: " + url)
   end

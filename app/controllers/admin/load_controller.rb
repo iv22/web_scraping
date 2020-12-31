@@ -22,8 +22,8 @@ class Admin::LoadController < ApplicationController
   private
 
   def scrap(type_id, resource, data)            
-    data.each do |vacancy|            
-      AddScrapingWorker.perform_async(type_id, resource, vacancy.body, vacancy.url)      
+    data.each do |content|            
+      AddScrapingWorker.perform_async(type_id, resource, content.body, content.url, content.actual_date)      
     end  
   end
 end

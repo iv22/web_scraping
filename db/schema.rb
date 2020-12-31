@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_26_132538) do
+ActiveRecord::Schema.define(version: 2020_12_31_110223) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -43,6 +43,8 @@ ActiveRecord::Schema.define(version: 2020_12_26_132538) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "content_type_id"
+    t.date "actual_date", null: false
+    t.integer "actual_year", default: -> { "date_part('year'::text, actual_date)" }
     t.index ["body"], name: "index_contents_on_body", using: :gin
     t.index ["content_type_id"], name: "index_contents_on_content_type_id"
   end

@@ -1,0 +1,21 @@
+<script src="https://www.google.com/jsapi"></script>
+<h3>Результаты анализа позитивности статей на ресурсе people.onliner.by</h3>
+<%= javascript_tag do -%>
+   google.load("visualization", "1", {packages:["corechart"]});
+   google.setOnLoadCallback(drawChart);
+   function drawChart() {
+    var data = JSON.parse('<%= @data.to_json.html_safe -%>');
+    console.log(data);
+    data = google.visualization.arrayToDataTable(data);
+    var options = {
+     title: 'Динамика позитивности статей по годам',
+     hAxis: {title: 'Год'},
+     vAxis: {title: 'Значение коэффициента'}
+    };
+    var chart = new google.visualization.ColumnChart(document.getElementById('oil'));
+    chart.draw(data, options);
+   }
+<% end -%>
+
+<div id="oil" style="width: 500px; height: 400px;"></div>
+ 

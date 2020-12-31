@@ -13,8 +13,8 @@ function PeopleOnliner(props) {
   /* setDefaultLocale('ru'); */
   return (
     <React.Fragment>
-      <div class="col-1"></div>
-      <div class="col-3">
+      <div className="col-1"></div>
+      <div className="col-3">
         <label>Начало периода</label>
         <br/>
         <DatePicker 
@@ -27,7 +27,7 @@ function PeopleOnliner(props) {
           locale="ru"
           dropdownMode="scroll" />      
       </div>
-      <div class="col-3">
+      <div className="col-3">
         <label>Конец периода (включительно)</label>
         <br/>
         <DatePicker 

@@ -3,6 +3,8 @@
 # Table name: contents
 #
 #  id              :bigint           not null, primary key
+#  actual_date     :date             not null
+#  actual_year     :integer
 #  body            :jsonb
 #  resource        :string(60)
 #  url             :string(500)

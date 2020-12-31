@@ -3,6 +3,8 @@
 # Table name: contents
 #
 #  id              :bigint           not null, primary key
+#  actual_date     :date             not null
+#  actual_year     :integer
 #  body            :jsonb
 #  resource        :string(60)
 #  url             :string(500)
@@ -21,4 +23,15 @@
 #
 class Content < ApplicationRecord
   belongs_to :content_type
+
+  scope :onliner, -> { where(resource: 'people.onliner.by') }
+  scope :rabotaby, -> { where(resource: 'rabota.by') }
+
+  def self.onliner_mood_by_year    
+    data = [["Год", "Коэффициент"]]
+    Content.onliner.select("actual_year, avg((body -> 'text_mood')::numeric) as mood").
+      group("actual_year").
+      each { |row| data << [row["actual_year"].to_s, Float(row["mood"])] }
+    data  
+  end  
 end

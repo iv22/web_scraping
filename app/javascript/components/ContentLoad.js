@@ -34,39 +34,39 @@ function ContentLoad(props) {
 
   return (
     <div>      
-      <form ref={form} onSubmit={formSubmit} class="container">
-        <div class="row">
-          <div class="container">
-            <div class="row">
-              <label htmlFor="onliner" class="btn btn-secondary">
+      <form ref={form} onSubmit={formSubmit} className="container">
+        <div className="row">
+          <div className="container">
+            <div className="row">
+              <label htmlFor="onliner" className="btn btn-secondary">
                 <input type="radio" id="onliner" name="source" value="onliner" 
                   checked={selectedSource === "onliner"}
                   onChange={onValueChange}/>
                 Новости Onliner
               </label>          
             </div>
-            <div class="row">
+            <div className="row">
               {selectedSource === "onliner" ? <PeopleOnliner />: null}          
             </div> 
           </div>
         </div>
-        <div class="row">
-          <div class="container">
-            <div class="row">
-              <label htmlFor="rabotaby" class="btn btn-secondary">
+        <div className="row">
+          <div className="container">
+            <div className="row">
+              <label htmlFor="rabotaby" className="btn btn-secondary">
                 <input type="radio" id="rabotaby" name="source" value="rabotaby" 
                   checked={selectedSource === "rabotaby"} 
                   onChange={onValueChange} />
                 Вакансии RabotaBy
               </label>
             </div>
-            <div class="row">
+            <div className="row">
               {selectedSource === "rabotaby" ? <RabotaBy />: null}           
             </div>  
           </div>
         </div>
-        <div class="row">      
-          <input type='submit' value='Собрать данные' class="btn btn-primary" data-toggle="button" />
+        <div className="row">      
+          <input type='submit' value='Собрать данные' className="btn btn-primary" data-toggle="button" />
         </div>
       </form>        
     </div>
