@@ -9,7 +9,6 @@ function ContentLoad(props) {
 
   const formSubmit = (event) => {
     event.preventDefault()
-    console.log("SUBMIT")
     const data = new FormData(form.current)
     fetch(`/admin/load/${selectedSource}`,
     {
@@ -28,12 +27,11 @@ function ContentLoad(props) {
   }
 
   const onValueChange = (event) => {
-    console.log("ON_CHANGE: " + event.target.value)
     setSelected(event.target.value)
   }
 
   return (
-    <div>      
+    <div>
       <form ref={form} onSubmit={formSubmit} className="container">
         <div className="row">
           <div className="container">
