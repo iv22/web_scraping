@@ -4,6 +4,7 @@ Feature: Authentication
   As admin
   I should be able to log in
 
+  @javascript
   Scenario: Admin logs in
     Given I am a registered Admin
     And I visit the admin page
