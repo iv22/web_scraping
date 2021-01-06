@@ -11,6 +11,12 @@ Given("I visit the admin page") do
   visit admin_root_path
 end
 
+Given("I am logged in") do
+  visit admin_root_path
+  fill_log_in_form
+  click_button 'Log in'
+end
+
 When("I fill login form") do
   fill_log_in_form
   click_button 'Log in'
