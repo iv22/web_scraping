@@ -30,7 +30,7 @@ class OnlinerNews < WebContent
   private
 
   def result_count
-    5
+    15
   end
 
   def get_data
