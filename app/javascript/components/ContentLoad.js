@@ -5,6 +5,7 @@ import RabotaBy from "./Rabotaby"
 function ContentLoad(props) {
   const token = document.querySelector('meta[name="csrf-token"]').content   
   const [selectedSource, setSelected] = useState(props.selected)
+  const [alert, setAlert] = useState(props.alert)
   const form = useRef(null)
 
   const formSubmit = (event) => {
@@ -18,11 +19,11 @@ function ContentLoad(props) {
       },
       body: data
     })
-    .then((response) => {
-      return response
+    .then((response) => {      
+      return response.json()
     })
     .then((data) => {
-      console.log(data)
+      setAlert(data.status)      
     });    
   }
 
@@ -32,6 +33,9 @@ function ContentLoad(props) {
 
   return (
     <div>
+      <div className="alert alert-primary" role="alert" name="alert">
+        { alert }
+      </div>
       <form ref={form} onSubmit={formSubmit} className="container">
         <div className="row">
           <div className="container">

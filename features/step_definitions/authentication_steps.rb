@@ -24,5 +24,4 @@ end
 
 Then("I should be logged in") do
   expect(page).to have_button(value: 'Собрать данные') 
-  # expect(page).to have_content('logged in')
 end
