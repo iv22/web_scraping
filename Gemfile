@@ -78,6 +78,7 @@ group :test do
   gem 'webmock', '~> 3.11.0'
   gem 'database_cleaner', '~> 1.8.5'
   gem 'rspec-sidekiq', '3.1.0'
+  gem 'rails-controller-testing', '~> 1.0.1'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
