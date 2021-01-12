@@ -23,16 +23,21 @@
 #
 FactoryBot.define do
   factory :content do    
-    actual_date { Date.new(2021,1,15) }
+    transient do
+      year { 2021 }
+      mood { -4.53044300237 }
+    end
+
+    actual_date { Date.new(year, 1, 15) }
     resource  { Faker::Internet.domain_name }    
     url { Faker::Internet.url }
     association :content_type, factory: :content_type
    
-    trait :onliner do
+    trait :onliner do      
       resource { "people.onliner.by" }      
       body {{\
         "author": "Анна Бонд",\
-        "text_mood": -4.53044300237,\
+        "text_mood": mood,\
         "words_frequency":\
         {\
           "ruby": 2,\
