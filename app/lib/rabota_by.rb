@@ -22,7 +22,7 @@ class RabotaBy < WebContent
   private
 
   def result_count
-    5
+    250
   end
 
   def get_data(url = base_uri, result_links = [])

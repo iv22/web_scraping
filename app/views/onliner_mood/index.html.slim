@@ -1,5 +1,5 @@
 script src="https://www.google.com/jsapi" 
-h3 Результаты анализа позитивности статей на ресурсе people.onliner.by
+h3 Результаты анализа позитивности статей
 = javascript_tag do
   | google.load("visualization", "1", {packages:["corechart"]});
   | google.setOnLoadCallback(drawChart);
@@ -11,8 +11,8 @@ h3 Результаты анализа позитивности статей н�
   | hAxis: {title: 'Год'},
   | vAxis: {title: 'Значение коэффициента'}
   | };
-  | var chart = new google.visualization.ColumnChart(document.getElementById('oil'));
+  | var chart = new google.visualization.ColumnChart(document.getElementById('mood_chart'));
   | chart.draw(data, options);
   | }
-#oil style=("width: 500px; height: 400px;") 
+#mood_chart style=("width: 800px; height: 500px;") 
  

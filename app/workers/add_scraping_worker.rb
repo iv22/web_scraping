@@ -11,7 +11,7 @@ class AddScrapingWorker
         url: content.url,
         actual_date: content.actual_date)    
         p DateTime.now
-      sleep(rand(i) / 10.0)  
+      sleep(rand(i) / 20.0)  
     end
   end
 end

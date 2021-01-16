@@ -27,10 +27,10 @@ class Content < ApplicationRecord
   scope :onliner, -> { where(resource: 'people.onliner.by') }
   scope :rabotaby, -> { where(resource: 'rabota.by') }
 
-  def self.onliner_mood_by_year    
+  def self.onliner_mood_by_year
     data = [["Год", "Коэффициент"]]
     Content.onliner.select("actual_year, avg((body -> 'text_mood')::numeric) as mood").
-      group("actual_year").
+      group("actual_year").order(:actual_year).
       each { |row| data << [row["actual_year"].to_s, Float(row["mood"])] }
     data  
   end  
