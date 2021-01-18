@@ -22,23 +22,23 @@
 #  fk_rails_...  (content_type_id => content_types.id)
 #
 FactoryBot.define do
-  factory :content do    
+  factory :content do
     transient do
       year { 2021 }
       mood { -4.53044300237 }
     end
 
     actual_date { Date.new(year, 1, 15) }
-    resource  { Faker::Internet.domain_name }    
+    resource  { Faker::Internet.domain_name }
     url { Faker::Internet.url }
     association :content_type, factory: :content_type
-   
-    trait :onliner do      
-      resource { "people.onliner.by" }      
-      body {{\
-        "author": "Анна Бонд",\
+
+    trait :onliner do
+      resource { 'people.onliner.by' }
+      body { {\
+        "author": 'Анна Бонд',\
         "text_mood": mood,\
-        "words_frequency":\
+        "words_frequency": \
         {\
           "ruby": 2,\
           "on": 1,\
@@ -50,13 +50,13 @@ FactoryBot.define do
         }\
       }}
       association :content_type, factory: [:content_type, :article]
-    end 
+    end
 
     trait :rabotaby do
-      resource { "rabota.by" }
-      body {{\
-        "company": "Рога и копыта",\
-        "words_frequency":\
+      resource { 'rabota.by' }
+      body { {\
+        "company": 'Рога и копыта',\
+        "words_frequency": \
         {\
           "ruby": 2,\
           "on": 1,\

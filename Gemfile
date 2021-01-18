@@ -42,7 +42,7 @@ gem 'devise', '~> 4.7.3'
 
 # User interface React
 gem 'react-rails', '~> 2.6.1'
-gem "jquery-rails"
+gem 'jquery-rails'
 
 # Simple working with forms
 gem 'simple_form', '~> 5.0.3'
@@ -71,7 +71,7 @@ group :development do
   gem 'rubocop-rspec', '~> 2.1.0'
   gem 'rubocop-packaging', '~> 0.5.1'
   gem 'rubocop-performance', '~> 1.9.2'
-  
+
   gem 'capistrano', '~> 3.11'
   gem 'capistrano-rails', '~> 1.4'
   gem 'capistrano-passenger', '~> 0.2.0'

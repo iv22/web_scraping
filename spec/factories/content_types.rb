@@ -12,15 +12,15 @@
 #  index_content_types_on_name  (name) UNIQUE
 #
 FactoryBot.define do
-  factory :content_type do    
+  factory :content_type do
     name { Faker::Job.field }
 
     trait :article do
-      name { "article" }
+      name { 'article' }
     end
 
     trait :vacancy do
-      name { "job vacancy" }
+      name { 'job vacancy' }
     end
   end
 end
