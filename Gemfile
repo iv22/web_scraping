@@ -67,6 +67,10 @@ group :development do
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'annotate', '~> 3.1.1'
+  gem 'rubocop-rails', '~> 2.9.1'
+  gem 'rubocop-rspec', '~> 2.1.0'
+  gem 'rubocop-packaging', '~> 0.5.1'
+  gem 'rubocop-performance', '~> 1.9.2'
   
   gem 'capistrano', '~> 3.11'
   gem 'capistrano-rails', '~> 1.4'
