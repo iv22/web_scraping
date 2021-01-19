@@ -11,8 +11,15 @@
 #
 #  index_content_types_on_name  (name) UNIQUE
 #
-class ContentType < ApplicationRecord
-  has_many :contents, dependent: :restrict_with_exception
+require 'rails_helper'
 
-  validates :name, presence: true
+RSpec.describe ContentType, type: :model do  
+  # Associations
+  it { is_expected.to have_many :contents }
+
+  # Columns
+  it { is_expected.to have_db_column(:name).of_type(:string) }
+
+  # Validations
+  it { is_expected.to validate_presence_of :name }
 end
