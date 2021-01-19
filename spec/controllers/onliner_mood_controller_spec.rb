@@ -1,14 +1,13 @@
 require 'rails_helper'
+require 'shared_content'
 
 RSpec.describe OnlinerMoodController, type: :controller do
-  let(:data_headers) { ['Год', 'Коэффициент'] }
+  include_context 'shared content data'
 
   describe 'GET #index' do
     context 'when exists any Content data' do
-      let(:data_expected) { ['2021', -4.53044300237] }
-
       before do
-        FactoryBot.create(:content, :onliner, year: Integer(data_expected[0]), mood: data_expected[1])
+        create_onliner_content
         get :index
       end
 

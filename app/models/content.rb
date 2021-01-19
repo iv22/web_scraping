@@ -22,7 +22,14 @@
 #  fk_rails_...  (content_type_id => content_types.id)
 #
 class Content < ApplicationRecord
+  JSON_SCHEMA = Rails.root.join('db', 'schemas', 'content_json.schema').to_s
+
   belongs_to :content_type
+
+  validates :resource, presence: true
+  validates :actual_date, presence: true
+  validates :url, presence: true, url: true
+  validates :body, presence: true, json: { schema: JSON_SCHEMA }
 
   scope :onliner, -> { where(resource: 'people.onliner.by') }
   scope :rabotaby, -> { where(resource: 'rabota.by') }

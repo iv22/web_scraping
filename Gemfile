@@ -48,6 +48,8 @@ gem 'jquery-rails'
 gem 'simple_form', '~> 5.0.3'
 
 gem 'textmood', '~> 0.1.3'
+gem 'validate_url', '~> 1.0.13'
+gem 'activerecord_json_validator', '1.3.0'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -57,6 +59,7 @@ group :development, :test do
   gem 'cucumber-rails', '~> 2.2.0', require: false
   gem 'factory_bot_rails', '~> 6.1.0'
   gem 'faker', '~> 2.15.1'
+  gem 'shoulda-matchers', '~> 4.5.0'
 end
 
 group :development do
