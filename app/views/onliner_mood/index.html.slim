@@ -1,18 +1,30 @@
 script src="https://www.google.com/jsapi" 
-h3 Результаты анализа позитивности статей
-= javascript_tag do
-  | google.load("visualization", "1", {packages:["corechart"]});
-  | google.setOnLoadCallback(drawChart);
-  | function drawChart() {
-  | var data = JSON.parse('#{@data.to_json.html_safe}');
-  | data = google.visualization.arrayToDataTable(data);
-  | var options = {
-  | title: 'Динамика позитивности статей по годам',
-  | hAxis: {title: 'Год'},
-  | vAxis: {title: 'Значение коэффициента'}
-  | };
-  | var chart = new google.visualization.ColumnChart(document.getElementById('mood_chart'));
-  | chart.draw(data, options);
-  | }
-#mood_chart style=("width: 800px; height: 500px;") 
- 
+.alert.text-white.bg-dark role="alert" 
+  | Результаты анализа настроения статей в домене BY
+.row
+  .col-sm-6
+    .card.text-white.bg-dark
+      .card-body
+        h5.card-title График
+        = javascript_tag do
+          | google.load("visualization", "1", {packages:["corechart"]});
+          | google.setOnLoadCallback(drawChart);
+          | function drawChart() {
+          | var data = JSON.parse('#{@data.to_json.html_safe}');
+          | data = google.visualization.arrayToDataTable(data);
+          | var options = {
+          | title: 'Динамика позитивности статей по годам',
+          | hAxis: {title: 'Год'},
+          | vAxis: {title: 'Значение коэффициента'},
+          | backgroundColor: 'gray'
+          | };
+          | var chart = new google.visualization.ColumnChart(document.getElementById('mood_chart'));
+          | chart.draw(data, options);
+          | }
+        #mood_chart style=("width: 100%; height: 400px;")
+  .col-sm-6
+    .card.text-white.bg-dark
+      .card-body
+        h5.card-title Статистика
+        p.card-text With supporting text below as a natural lead-in to additional content.
+

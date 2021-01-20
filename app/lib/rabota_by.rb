@@ -26,11 +26,11 @@ class RabotaBy < WebContent
     def get_data(url = base_uri, result_links = [])
       html = URI.open(url)
       doc = Nokogiri::HTML(html)
-      doc.xpath('//a[@data-vacancy-id]').each do |link|
+      doc.xpath('//a[@data-position]').each do |link|
         result_links << { url: link['href'], actual_date: get_actual_date }
       end
       get_data('https://rabota.by' + doc.xpath("//a[contains(@data-qa, 'pager-next')]").first['href'], result_links) \
-        if doc.xpath("//a[contains(@data-qa, 'pager-next')]").count == 1 && result_links.size < result_count
+        if doc.xpath("//a[contains(@data-qa, 'pager-next')]").count == 1 && result_links.size < result_count 
       result_links
     rescue Errno::ENOENT, SocketError
       raise StandardError('URI unreachable: ' + url)
