@@ -35,10 +35,14 @@ class Content < ApplicationRecord
   scope :rabotaby, -> { where(resource: 'rabota.by') }
 
   def self.onliner_mood_by_year
-    data = [['Год', 'Коэффициент']]
-    Content.onliner.select("actual_year, avg((body -> 'text_mood')::numeric) as mood").
+    data = [['Год', 'Коэффициент', 'Самая негативная', 'Самая позитивная']]
+    Content.onliner.select("actual_year, avg((body -> 'text_mood')::numeric) as mood, 
+        min((body -> 'text_mood')::numeric) as worst, max((body -> 'text_mood')::numeric) as better").
       group('actual_year').order(:actual_year).
-      each { |row| data << [row['actual_year'].to_s, Float(row['mood'])] }
+      each { |row| data << [row['actual_year'].to_s, 
+        Float(row['mood']).round(2),
+        Float(row['worst']).round(2),
+        Float(row['better']).round(2)] }
     data
   end
 end
