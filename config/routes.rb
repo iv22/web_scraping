@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  root to: 'onliner_mood#index'
   get 'onliner_mood/index'
   devise_for :admin
 
